@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html><head>
+		<title>Road Trip by TEMPLATED</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="icon" href="favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/v4-shims.min.css"><style>
+  /* ========== 方案 A：覆盖 all.min.css 中的相对路径 @font-face ========== */
+  /* 原因：all.min.css 使用相对路径 ../webfonts/，在 Blob URL iframe 环境下无法解析 */
+  /* 解决：使用绝对路径重新定义，利用 CSS 层叠规则覆盖原定义 */
+  @font-face {
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('/assets/vendor/font-awesome-5.15.4/webfonts/fa-regular-400.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url('/assets/vendor/font-awesome-5.15.4/webfonts/fa-solid-900.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: "Font Awesome 5 Brands";
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('/assets/vendor/font-awesome-5.15.4/webfonts/fa-brands-400.woff2') format('woff2');
+  }
+
+  /* ========== FA4 兼容：FontAwesome 别名（unicode-range 自动路由） ========== */
+  /* 核心修复：TEMPLATED 等模版使用 font-family: FontAwesome 渲染 :before 伪元素图标 */
+  /* Brands 分区：浏览器仅在遇到 Brands 码点时使用此字体文件（427 个码点，与 Solid 0 重叠） */
+  @font-face {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-weight: normal;
+    font-display: block;
+    src: url('/assets/vendor/font-awesome-5.15.4/webfonts/fa-brands-400.woff2') format('woff2');
+    unicode-range: U+E013, U+E01A, U+E049, U+E052, U+E057, U+E07A, U+E07B, U+E07C, U+E07E, U+E07F, U+E083, U+E084, U+F081, U+F082, U+F08C, U+F092, U+F099, U+F09A, U+F09B, U+F0D2, U+F0D3, U+F0D4, U+F0D5, U+F0E1, U+F113, U+F136, U+F13B, U+F13C, U+F15A, U+F167, U+F168, U+F169, U+F16B, U+F16C, U+F16D, U+F16E, U+F170, U+F171, U+F173, U+F174, U+F179, U+F17A, U+F17B, U+F17C, U+F17D, U+F17E, U+F180, U+F181, U+F184, U+F189, U+F18A, U+F18B, U+F18C, U+F18D, U+F194, U+F198, U+F19A, U+F19B, U+F19E, U+F1A0, U+F1A1, U+F1A2, U+F1A3, U+F1A4, U+F1A5, U+F1A6, U+F1A7, U+F1A8, U+F1A9, U+F1AA, U+F1B4, U+F1B5, U+F1B6, U+F1B7, U+F1BC, U+F1BD, U+F1BE, U+F1CA, U+F1CB, U+F1CC, U+F1D0, U+F1D1, U+F1D2, U+F1D3, U+F1D4, U+F1D5, U+F1D6, U+F1D7, U+F1E7, U+F1E8, U+F1E9, U+F1ED, U+F1EE, U+F1F0, U+F1F1, U+F1F2, U+F1F3, U+F1F4, U+F1F5, U+F202, U+F203, U+F208, U+F209, U+F20D, U+F20E, U+F210, U+F211, U+F212, U+F213, U+F214, U+F215, U+F216, U+F231, U+F232, U+F237, U+F23A, U+F23B, U+F23C, U+F23D, U+F23E, U+F24B, U+F24C, U+F25E, U+F260, U+F261, U+F263, U+F264, U+F265, F266, U+F267, U+F268, U+F269, U+F26A, U+F26B, U+F26D, U+F26E, U+F270, U+F27C, U+F27D, U+F27E, U+F280, U+F281, U+F282, U+F284, U+F285, U+F286, U+F287, U+F288, U+F289, U+F28A, U+F293, U+F294, U+F296, U+F297, U+F298, U+F299, U+F2A5, U+F2A6, U+F2A9, U+F2AA, U+F2AB, U+F2AC, U+F2AD, U+F2AE, U+F2B0, U+F2B1, U+F2B2, U+F2B3, U+F2B4, U+F2B8, U+F2C4, U+F2C5, U+F2C6, U+F2D5, U+F2D6, U+F2D7, U+F2D8, U+F2D9, U+F2DA, U+F2DD, U+F2DE, U+F2E0, U+F35C, U+F368, U+F369, U+F36A, U+F36B, U+F36C, U+F36D, U+F36E, U+F36F, U+F370, U+F371, U+F372, U+F373, U+F374, U+F375, U+F378, U+F379, U+F37A, U+F37B, U+F37C, U+F37D, U+F37F, U+F383, U+F384, U+F385, U+F388, U+F38B, U+F38C, U+F38D, U+F38E, U+F38F, U+F391, U+F392, U+F393, U+F394, U+F395, U+F396, U+F397, U+F399, U+F39A, U+F39D, U+F39E, U+F39F, U+F3A1, U+F3A2, U+F3A3, U+F3A4, U+F3A6, U+F3A7, U+F3A8, U+F3A9, U+F3AA, U+F3AB, U+F3AC, U+F3AD, U+F3AE, U+F3AF, U+F3B0, U+F3B1, U+F3B2, U+F3B4, U+F3B5, U+F3B6, U+F3B7, U+F3B8, U+F3B9, U+F3BA, U+F3BB, U+F3BC, U+F3BD, U+F3C0, U+F3C3, U+F3C4, U+F3C6, U+F3C7, U+F3C8, U+F3CA, U+F3CB, U+F3CC, U+F3D0, U+F3D2, U+F3D3, U+F3D4, U+F3D5, U+F3D6, U+F3D7, U+F3D8, U+F3D9, U+F3DA, U+F3DB, U+F3DC, U+F3DF, U+F3E1, U+F3E2, U+F3E3, U+F3E4, U+F3E6, U+F3E7, U+F3E8, U+F3E9, U+F3EA, U+F3EB, U+F3EC, U+F3EE, U+F3EF, U+F3F3, U+F3F5, U+F3F6, U+F3F7, U+F3F8, U+F3F9, U+F3FE, U+F402, U+F403, U+F404, U+F405, U+F407, U+F408, U+F409, U+F40A, U+F40B, U+F40C, U+F40D, U+F411, U+F412, U+F413, U+F414, U+F416, U+F417, U+F419, U+F41A, U+F41B, U+F41C, U+F41D, U+F41E, U+F41F, U+F420, U+F421, U+F423, U+F425, U+F426, U+F427, U+F428, U+F429, U+F42A, U+F42B, U+F42C, U+F42D, U+F42E, U+F42F, U+F430, U+F431, U+F44D, U+F452, U+F457, U+F459, U+F4D5, U+F4E4, U+F4E5, U+F4E7, U+F4E8, U+F4E9, U+F4EA, U+F4EB, U+F4EC, U+F4ED, U+F4EE, U+F4EF, U+F4F0, U+F4F1, U+F4F2, U+F4F3, U+F4F4, U+F4F5, U+F4F6, U+F4F7, U+F4F8, U+F4F9, U+F50A, U+F50B, U+F50D, U+F50E, U+F50F, U+F510, U+F511, U+F512, U+F513, U+F592, U+F59E, U+F5A3, U+F5A8, U+F5B2, U+F5B5, U+F5BE, U+F5C6, U+F5CC, U+F5CF, U+F5F1, U+F5F7, U+F5FA, U+F60F, U+F612, U+F63F, U+F66D, U+F69D, U+F6C9, U+F6CA, U+F6CC, U+F6DC, U+F704, U+F731, U+F75D, U+F790, U+F791, U+F797, U+F798, U+F799, U+F7AF, U+F7B0, U+F7B1, U+F7B3, U+F7BB, U+F7BC, U+F7D3, U+F7D6, U+F7DF, U+F7E0, U+F7E1, U+F7E3, U+F836, U+F837, U+F839, U+F83A, U+F83B, U+F83C, U+F83D, U+F83F, U+F840, U+F841, U+F842, U+F8A6, U+F8CA, U+F8D2, U+F8E1, U+F8E8;
+  }
+  /* Solid 分区：兜底，处理所有非 Brands 码点 */
+  @font-face {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-weight: normal;
+    font-display: block;
+    src: url('/assets/vendor/font-awesome-5.15.4/webfonts/fa-solid-900.woff2') format('woff2');
+  }
+
+  /* 强制覆盖常用前缀的字体，确保模版样式不干扰 */
+  .fa, .fas, .far, .fab {
+    font-family: "Font Awesome 5 Free", "Font Awesome 5 Brands" !important;
+  }
+  .fas { font-weight: 900 !important; }
+  .far { font-weight: 400 !important; }
+
+  /* 兼容 HTML5 UP 等模版：显式将 fab/fas 映射到对应的字体族和权重 */
+  .icon.fab:before { font-family: "Font Awesome 5 Brands" !important; }
+  .icon.fas:before { font-family: "Font Awesome 5 Free" !important; font-weight: 900 !important; }
+  .icon.far:before { font-family: "Font Awesome 5 Free" !important; font-weight: 400 !important; }
+
+  /* 兼容 TEMPLATED 等模版：处理无 fa/fas/fab 前缀的 fa-xxx 类名 */
+  /* 核心修复：font-family 指向 FontAwesome 别名，由 unicode-range 自动路由到正确字体 */
+  [class*="fa-"]:not(.fa):not(.fas):not(.far):not(.fab):not(.fad):not(.fal):before {
+    font-family: 'FontAwesome' !important;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* TEMPLATED 模版 .icon.fa-xxx 结构的高特异性覆盖 */
+  .icon[class*="fa-"]:not(.fa):not(.fas):not(.far):not(.fab):not(.fal):not(.fad):not(.brands):not(.solid):before {
+    font-family: 'FontAwesome' !important;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+
+[data-ss-asset-replaced="true"],
+img[data-ss-asset-replaced="true"],
+[data-var-keys]:has([data-ss-asset-replaced="true"]),
+*:has(> [data-ss-asset-replaced="true"]) {
+  filter: none !important;
+}
+
+</style></head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="index.html">Road Trip by TEMPLATED</a></div>
+				<a href="#menu"><span>Menu</span></a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">Elements</a></li>
+				</ul>
+			</nav>
+
+		<!-- Banner -->
+		<!--
+			Note: To show a background image, set the "data-bg" attribute below
+			to the full filename of your image. This is used in each section to set
+			the background image.
+		-->
+			<section id="banner" class="bg-img" data-bg="banner.jpg">
+				<div class="inner">
+					<header>
+						<h1>This is Road Trip</h1>
+					</header>
+				</div>
+				<a href="#one" class="more">Learn More</a>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="wrapper post bg-img" data-bg="banner2.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>Nibh non lobortis mus nibh</h2>
+							<p>01.01.2017</p>
+						</header>
+						<div class="content">
+							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+						</div>
+						<footer>
+							<a href="generic.html" class="button alt">Learn More</a>
+						</footer>
+					</article>
+				</div>
+				<a href="#two" class="more">Learn More</a>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper post bg-img" data-bg="banner5.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>Mus elit a ultricies at</h2>
+							<p>12.21.2016</p>
+						</header>
+						<div class="content">
+							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+						</div>
+						<footer>
+							<a href="generic.html" class="button alt">Learn More</a>
+						</footer>
+					</article>
+				</div>
+				<a href="#three" class="more">Learn More</a>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="wrapper post bg-img" data-bg="banner4.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>Varius a cursus aliquet</h2>
+							<p>11.11.2016</p>
+						</header>
+						<div class="content">
+							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+						</div>
+						<footer>
+							<a href="generic.html" class="button alt">Learn More</a>
+						</footer>
+					</article>
+				</div>
+				<a href="#four" class="more">Learn More</a>
+			</section>
+
+		<!-- Four -->
+			<section id="four" class="wrapper post bg-img" data-bg="banner3.jpg">
+				<div class="inner">
+					<article class="box">
+						<header>
+							<h2>Luctus blandit mi lectus in nascetur</h2>
+							<p>10.30.2016</p>
+						</header>
+						<div class="content">
+							<p>Scelerisque enim mi curae erat ultricies lobortis donec velit in per cum consectetur purus a enim platea vestibulum lacinia et elit ante scelerisque vestibulum. At urna condimentum sed vulputate a duis in senectus ullamcorper lacus cubilia consectetur odio proin sociosqu a parturient nam ac blandit praesent aptent. Eros dignissim mus mauris a natoque ad suspendisse nulla a urna in tincidunt tristique enim arcu litora scelerisque eros suspendisse.</p>
+						</div>
+						<footer>
+							<a href="generic.html" class="button alt">Learn More</a>
+						</footer>
+					</article>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+
+					<h2>Contact Me</h2>
+
+					<form action="https://formspree.io/f/PLACEHOLDER" method="POST" data-form-id="roadtrip-index" data-form-type="contact" data-form-name="Contact Form 1" data-form-placeholder="true" data-form-ajax="true">
+
+						<div class="field half first">
+							<label for="name">Name</label>
+							<input name="name" id="name" type="text" placeholder="Name">
+						</div>
+						<div class="field half">
+							<label for="email">Email</label>
+							<input name="email" id="email" type="email" placeholder="Email">
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input value="Send Message" class="button alt" type="submit" data-form-submit="true"></li>
+						</ul>
+					<input type="hidden" name="_subject" value="New message from roadtrip-index"><input type="hidden" name="_replyto" data-form-replyto="true" value=""><input type="text" name="_gotcha" autocomplete="off" tabindex="-1" style="position:absolute;left:-5000px;height:0;width:0;opacity:0;pointer-events:none;"><div class="form-status" data-form-status="idle" aria-hidden="true" data-placeholder-message="Message channel not configured. Please fill in the Formspree Endpoint." style="display: none;" data-success-message="Thank you! Your message has been sent." data-error-message="Submission failed. Please try again later."></div></form>
+
+					<ul class="icons">
+						<li><a href="#" class="icon round fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
+					</ul>
+
+					<div class="copyright">© Untitled. Design:<a href="https://templated.co">TEMPLATED</a>. Images:<a href="https://unsplash.com">Unsplash</a>.</div>
+
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	
+<script id="ss-form-placeholder-guard">(function() {
+  if (window.__SS_FORM_GUARD__) {
+    return;
+  }
+  window.__SS_FORM_GUARD__ = true;
+  var PLACEHOLDER = "https://formspree.io/f/PLACEHOLDER";
+  var MISSING_ID_MESSAGE = 'Form data-form-id is missing. Please re-import template or contact support.';
+  var EDITOR_BLOCK_MESSAGE = 'Editor mode is for configuration only. Please test forms in Preview (new tab).';
+
+  function getStatusElement(form) {
+    if (!form || typeof form.querySelector !== 'function') return null;
+    return form.querySelector('[data-form-status]');
+  }
+
+  function getPlaceholderMessage(statusEl) {
+    var MISSING_ENDPOINT_MESSAGE = 'Formspree endpoint is missing. Please configure it before submitting.';
+    if (!statusEl) return MISSING_ENDPOINT_MESSAGE;
+    var explicitAttr = statusEl.getAttribute('data-placeholder-message');
+    if (explicitAttr && explicitAttr !== "Message channel not configured. Please fill in the Formspree Endpoint.") return explicitAttr;
+    return MISSING_ENDPOINT_MESSAGE;
+  }
+
+  function updateStatus(statusEl, message, state) {
+    if (!statusEl) return;
+    statusEl.setAttribute('data-form-status', state || 'error');
+    if (message) {
+       // 虽然主要使用原生校验和跳转，但在拦截时依然更新一下状态文本（如果存在）
+       statusEl.textContent = message;
+    }
+  }
+
+  function notifyStatus(form, status, message) {
+    if (!message) return;
+    var payload = {
+      type: 'FORM_STATUS',
+      status: status,
+      formId: (form && form.getAttribute && form.getAttribute('data-form-id')) || '',
+      message: message
+    };
+    if (window.parent && window.parent !== window && typeof window.parent.postMessage === 'function') {
+      try {
+        window.parent.postMessage(payload, window.location.origin);
+        return;
+      } catch (err) { /* ignore */ }
+    }
+    } catch (err) { /* ignore */ }
+  }
+
+  function isEditorContext() {
+    var attr = ''
+    try {
+      attr = (document.documentElement && document.documentElement.getAttribute('data-ss-render-context')) || ''
+    } catch (err) {
+      attr = ''
+    }
+    if (attr === 'editor') return true;
+    if (attr === 'preview') return false;
+    try {
+      if (window.parent && window.parent !== window) return true;
+    } catch (err2) { /* ignore */ }
+    return false;
+  }
+
+  document.addEventListener('submit', function(event) {
+    var form = event.target;
+    if (!form || form.tagName !== 'FORM') return;
+
+    var action = (form.getAttribute('action') || '').trim();
+    var statusEl = getStatusElement(form);
+    var formId = (form.getAttribute('data-form-id') || '').trim();
+
+    // 1. 验证 Form ID
+    if (!formId) {
+      event.preventDefault();
+      updateStatus(statusEl, MISSING_ID_MESSAGE, 'error');
+      notifyStatus(form, 'invalid', MISSING_ID_MESSAGE);
+      return;
+    }
+
+    // 2. 验证是否为占位符（未配置 Endpoint）
+    if (!action || action.indexOf('PLACEHOLDER') !== -1) {
+      event.preventDefault();
+      var placeholderMessage = getPlaceholderMessage(statusEl);
+      updateStatus(statusEl, placeholderMessage, 'error');
+      notifyStatus(form, 'placeholder', placeholderMessage);
+      return;
+    }
+
+    // 3. 拦截编辑器模式下的提交（核心保护）
+    if (isEditorContext()) {
+      event.preventDefault();
+      updateStatus(statusEl, EDITOR_BLOCK_MESSAGE, 'blocked');
+      notifyStatus(form, 'blocked', EDITOR_BLOCK_MESSAGE);
+      return;
+    }
+
+    // 4. 同步 _replyto 字段（可选增强）
+    var emailField = form.querySelector('input[type="email"], input[data-form-email="true"]');
+    var replyField = form.querySelector('input[name="_replyto"]');
+    if (emailField && replyField) {
+      replyField.value = emailField.value || '';
+    }
+
+    // 允许原生提交流程...
+  }, true);
+})();</script></body></html>
